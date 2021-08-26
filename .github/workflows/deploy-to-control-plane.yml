@@ -13,6 +13,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Convert the secret variables to environment variables for use by the Control Plane CLI
 env:
   CPLN_ORG: ${{secrets.CPLN_ORG}}
   CPLN_TOKEN: ${{secrets.CPLN_TOKEN}}

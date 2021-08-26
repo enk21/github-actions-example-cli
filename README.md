@@ -25,7 +25,7 @@ Browse to the Secrets page by clicking `Settings` (top menu bar), then `Secrets`
 
 ## Example Set Up
 
-When triggered, the GitHub action will execute the steps defined in the workload file located at `.github/workflow/deploy-to-control-plane.yml`. The example will containerize and push the application to the org's private image repository and create/update a GVC and workload hosted at Control Plane. Any committed modifications to the repository will trigger the pipeline.
+When triggered, the GitHub action will execute the steps defined in the workflow file located at `.github/workflow/deploy-to-control-plane.yml`. The example will containerize and push the application to the org's private image repository and create/update a GVC and workload hosted at Control Plane. 
 
 **Perform the following steps to set up the example:**
 
