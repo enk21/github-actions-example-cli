@@ -37,8 +37,8 @@ When triggered, the GitHub action will execute the steps defined in the workflow
     - The `yq` command is used to extract the GVC name from the `/cpln/cpln-gvc.yaml` file. It is used by the `--gvc` flag when executing the `cpln apply` command for the `cpln-workload.yaml` file.
 
 3. Review the two files in the `/cpln` directory:
-    - The `cpln-gvc.yaml` file defines the GVC to be created/updated.
-    - The `cpln-workload.yaml` file defines the workload to be created/updated.
+    - The `cpln-gvc.yaml` file defines the GVC to be created/updated. Update the GVC name.
+    - The `cpln-workload.yaml` file defines the workload to be created/updated. Update the workload name.
 
 ## Running Example Application
 
@@ -54,6 +54,8 @@ After the pipeline has successfully deployed the application, it can be tested b
 - `cpln apply` creates and updates the resources defined within the YAML file. If the name of a resource is changed, `cpln apply` will create a new resource. Any orphaned resources will need to be manually deleted.
 
 - The Control Plane CLI commands use the `CPLN_ORG` and `CPLN_TOKEN` environment variables when needed. There is no need to add the --org or --token flags when executing CLI commands.
+
+- The GVC definition must exists in its own YAML file. The `cpln apply` command using the file must be executed before any child (workloads, identities, etc.) definition YAML files are executed.
 
 ## Helper Links
 
