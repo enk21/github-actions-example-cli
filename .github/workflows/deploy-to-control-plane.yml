@@ -31,7 +31,7 @@ jobs:
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
-      - name: Control Plane CLI - Install
+      - name: Install Control Plane CLI 
         shell: bash
         run: |
           wget -q https://github.com/mikefarah/yq/releases/download/3.3.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq 
@@ -42,9 +42,11 @@ jobs:
       - name: Containerize application and push image
         shell: bash
         run: |
+          cpln profile update default --token ${CPLN_TOKEN}
           cpln image docker-login
-          docker build -t ${CPLN_ORG}.registry.cpln.io/${CPLN_IMAGE}:${{steps.vars.outputs.sha_short}} .
-          docker push ${CPLN_ORG}.registry.cpln.io/${CPLN_IMAGE}:${{steps.vars.outputs.sha_short}}
+          # docker build -t ${CPLN_ORG}.registry.cpln.io/${CPLN_IMAGE}:${{steps.vars.outputs.sha_short}} .
+          # docker push ${CPLN_ORG}.registry.cpln.io/${CPLN_IMAGE}:${{steps.vars.outputs.sha_short}}
+          cpln image build --name ${CPLN_IMAGE}:${{steps.vars.outputs.sha_short}} --dockerfile ./Dockerfile --push
 
       - name: Substitute Tokens in Control Plane YAML Files
         shell: bash
