@@ -61,6 +61,6 @@ jobs:
         working-directory: ./cpln
         run: |
           cpln apply -f cpln-gvc.yaml
-          cpln apply -f cpln-workload.yaml --gvc $(yq r cpln-gvc.yaml name) 
+          cpln apply -f cpln-workload.yaml --gvc bh-gvc-example-github-actions
 
 
