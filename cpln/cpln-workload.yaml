@@ -1,5 +1,5 @@
 kind: workload
-name: tbd-github-cicd-example-cli-workload
+name: bh-workload-example-github-actions
 spec:
   containers:
     - args: []
